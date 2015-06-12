@@ -53,7 +53,8 @@ lazy val commonSettings =
       "-encoding", "UTF-8"
     ),
     Compile / unmanagedSourceDirectories := Seq((Compile / scalaSource).value),
-    Test / unmanagedSourceDirectories := Seq((Test / scalaSource).value)
+    Test / unmanagedSourceDirectories := Seq((Test / scalaSource).value),
+    initialCommands := "import de.heikoseeberger.scalatrain._"
 )
 
 lazy val gitSettings =

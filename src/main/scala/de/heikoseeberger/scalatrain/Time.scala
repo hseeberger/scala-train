@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+package de.heikoseeberger.scalatrain
+
 final class Time(val hours: Int = 0, val minutes: Int = 0) {
   // TODO Check preconditions: hours must be within [0, 24)!
   // TODO Check preconditions: minutes must be within [0, 60)!
