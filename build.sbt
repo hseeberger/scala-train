@@ -9,6 +9,10 @@ scalacOptions ++= Vector(
   "-target:jvm-1.8"
 )
 
+libraryDependencies ++= Vector(
+  "org.scalatest" %% "scalatest" % "2.2.6" % "test"
+)
+
 import scalariform.formatter.preferences._
 scalariformPreferences := scalariformPreferences.value
   .setPreference(AlignSingleLineCaseStatements, true)
@@ -19,3 +23,6 @@ initialCommands := "import de.heikoseeberger.scalatrain._"
 
 test.in(Test)         := { scalastyle.in(Compile).toTask("").value; test.in(Test).value }
 scalastyleFailOnError := true
+
+coverageMinimum       := 100
+coverageFailOnMinimum := true
