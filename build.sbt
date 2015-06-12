@@ -10,7 +10,8 @@ scalacOptions ++= List(
 )
 
 libraryDependencies ++= List(
-  "org.scalatest" %% "scalatest" % "2.2.5" % "test"
+  "org.scalacheck" %% "scalacheck" % "1.12.5" % "test",
+  "org.scalatest"  %% "scalatest"  % "2.2.5"  % "test"
 )
 
 import scalariform.formatter.preferences._
