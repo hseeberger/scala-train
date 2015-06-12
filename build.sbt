@@ -9,6 +9,10 @@ scalacOptions ++= Vector(
   "-target:jvm-1.8"
 )
 
+libraryDependencies ++= Vector(
+  "org.scalatest" %% "scalatest" % "2.2.6" % "test"
+)
+
 import scalariform.formatter.preferences._
 scalariformPreferences := scalariformPreferences.value
   .setPreference(AlignSingleLineCaseStatements, true)
@@ -16,3 +20,6 @@ scalariformPreferences := scalariformPreferences.value
   .setPreference(DoubleIndentClassDeclaration, true)
 
 initialCommands := "import de.heikoseeberger.scalatrain._"
+
+coverageMinimum       := 100
+coverageFailOnMinimum := true
