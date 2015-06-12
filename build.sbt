@@ -15,5 +15,7 @@ SbtScalariform.autoImport.preferences := SbtScalariform.autoImport.preferences.v
   .setPreference(AlignSingleLineCaseStatements.MaxArrowIndent, 100)
   .setPreference(DoubleIndentClassDeclaration, true)
 
+initialCommands := "import de.heikoseeberger.scalatrain._"
+
 test.in(Test)         := { scalastyle.in(Compile).toTask("").value; test.in(Test).value }
 scalastyleFailOnError := true
