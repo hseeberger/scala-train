@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-final class Train
+final class Train(number: Int)
