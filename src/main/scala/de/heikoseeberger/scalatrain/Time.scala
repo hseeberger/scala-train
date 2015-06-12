@@ -22,8 +22,8 @@ object Time {
 }
 
 final case class Time(hours: Int = 0, minutes: Int = 0) {
-  // TODO Check preconditions: hours must be within [0, 24)!
-  // TODO Check preconditions: minutes must be within [0, 60)!
+  require(hours >= 0 && hours < 24, "hours must be within [0, 24)!")
+  require(minutes >= 0 && minutes < 60, "minutes must be within [0, 60)!")
 
   def -(that: Time): Int =
     minus(that)
