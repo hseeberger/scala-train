@@ -14,3 +14,5 @@ scalariformPreferences := scalariformPreferences.value
   .setPreference(AlignSingleLineCaseStatements, true)
   .setPreference(AlignSingleLineCaseStatements.MaxArrowIndent, 100)
   .setPreference(DoubleIndentClassDeclaration, true)
+
+initialCommands := "import de.heikoseeberger.scalatrain._"
