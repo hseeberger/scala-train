@@ -14,4 +14,6 @@
  * limitations under the License.
  */
 
-final class Train(number: Int)
+final class Train(val kind: String, val number: Int) {
+  // TODO Check preconditions: kind must not be empty!
+}
