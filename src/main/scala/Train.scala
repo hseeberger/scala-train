@@ -1,1 +1,1 @@
-class Train
+class Train(number: Int)
