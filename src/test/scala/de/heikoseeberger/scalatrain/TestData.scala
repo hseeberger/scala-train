@@ -14,8 +14,8 @@ object TestData {
     "RegionalExpress",
     666,
     List(
-      scalaCity,
-      slickMountain
+      Stop(scalaCity, re666ScalaCity._1, re666ScalaCity._2),
+      Stop(slickMountain, re666SlickMountain._1, re666SlickMountain._2)
     )
   )
 
@@ -26,9 +26,9 @@ object TestData {
     "InterCityExpress",
     610,
     List(
-      slickMountain,
-      losSprayos,
-      scalactica
+      Stop(slickMountain, ice610SlickMountain._1, ice610SlickMountain._2),
+      Stop(losSprayos, ice610LosSprayos._1, ice610LosSprayos._2),
+      Stop(scalactica, ice610Scalactica._1, ice610Scalactica._2)
     )
   )
 
@@ -38,8 +38,8 @@ object TestData {
     "InterCity",
     2024,
     List(
-      scalactica,
-      akkapolis
+      Stop(scalactica, ic2024Scalactica._1, ic2024Scalactica._2),
+      Stop(akkapolis, ic2024Akkapolis._1, ic2024Akkapolis._2)
     )
   )
 
@@ -49,8 +49,8 @@ object TestData {
     "InterCity",
     2312,
     List(
-      losSprayos,
-      scalactica
+      Stop(losSprayos, ic2312LosSprayos._1, ic2312LosSprayos._2),
+      Stop(scalactica, ic2312Scalactica._1, ic2312Scalactica._2)
     )
   )
 
@@ -60,8 +60,8 @@ object TestData {
     "InterCityExpress",
     1741,
     List(
-      scalactica,
-      akkapolis
+      Stop(scalactica, ice1741Scalactica._1, ice1741Scalactica._2),
+      Stop(akkapolis, ice1741Akkapolis._1, ice1741Akkapolis._2)
     )
   )
 }
