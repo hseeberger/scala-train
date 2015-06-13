@@ -11,8 +11,8 @@ class TrainSpec extends WordSpec with Matchers {
         "",
         666,
         List(
-          scalaCity,
-          slickMountain
+          Stop(scalaCity, re666ScalaCity._1, re666ScalaCity._2),
+          Stop(slickMountain, re666SlickMountain._1, re666SlickMountain._2)
         )
       )
     }
@@ -25,7 +25,7 @@ class TrainSpec extends WordSpec with Matchers {
       an[IllegalArgumentException] should be thrownBy Train(
         "RegionalExpress",
         666,
-        List(scalaCity)
+        List(Stop(scalaCity, re666ScalaCity._1, re666ScalaCity._2))
       )
     }
 
@@ -33,8 +33,17 @@ class TrainSpec extends WordSpec with Matchers {
       an[IllegalArgumentException] should be thrownBy Train(
         "RegionalExpress",
         666,
-        List(scalaCity, scalaCity)
+        List(
+          Stop(scalaCity, re666ScalaCity._1, re666ScalaCity._2),
+          Stop(scalaCity, re666SlickMountain._1, re666SlickMountain._2)
+        )
       )
+    }
+  }
+
+  "Calling stations" should {
+    "return the stations from the schedule" in {
+      re666.stations shouldBe List(scalaCity, slickMountain)
     }
   }
 }
