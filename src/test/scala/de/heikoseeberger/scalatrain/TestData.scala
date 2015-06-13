@@ -80,4 +80,6 @@ object TestData {
       Stop(akkapolis, ice1741Akkapolis._1, ice1741Akkapolis._2)
     )
   )
+
+  val journeyPlanner = new JourneyPlanner(Set(re666, ice610, ic2024, ic2312, ice1741))
 }
