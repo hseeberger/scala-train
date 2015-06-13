@@ -16,14 +16,13 @@
 
 package de.heikoseeberger.scalatrain
 
-import scala.collection.immutable.Seq
+import org.scalatest.{ Matchers, WordSpec }
 
-final case class Train(kind: String, number: Int, schedule: Seq[Station]) {
-  require(kind.nonEmpty, "kind must not be empty!")
-  require(schedule.size >= 2, "schedule must have at least two stops!")
-  require(schedule.distinct == schedule, "schedule must not contain duplicate stations!")
-}
+final class StationSpec extends WordSpec with Matchers {
 
-final case class Station(name: String) {
-  require(name.nonEmpty, "name must not be empty!")
+  "Creating a Station" should {
+    "throw an IllegalArgumentException for an empty name" in {
+      an[IllegalArgumentException] should be thrownBy Station("")
+    }
+  }
 }
