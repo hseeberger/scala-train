@@ -20,4 +20,17 @@ class JourneyPlannerSpec extends WordSpec with Matchers {
       journeyPlanner.trainsAt(akkapolis) shouldBe Set(ic2024, ice1741)
     }
   }
+
+  "Calling departuresAt" should {
+    "return the correct departures" in {
+      journeyPlanner.departuresAt(scalaCity) shouldBe Set(re666ScalaCity._2 -> re666)
+      journeyPlanner.departuresAt(scalactica) shouldBe Set(
+        ice610Scalactica._2 -> ice610,
+        ic2024Scalactica._2 -> ic2024,
+        ic2312Scalactica._2 -> ic2312,
+        ice1741Scalactica._2 -> ice1741
+      )
+      journeyPlanner.departuresAt(akkapolis) shouldBe Set(ic2024Akkapolis._2 -> ic2024, ice1741Akkapolis._2 -> ice1741)
+    }
+  }
 }
