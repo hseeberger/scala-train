@@ -10,8 +10,10 @@ scalacOptions ++= Vector(
 )
 
 libraryDependencies ++= Vector(
-  "org.scalacheck" %% "scalacheck" % "1.12.5" % "test",
-  "org.scalatest"  %% "scalatest"  % "2.2.6"  % "test"
+  "org.apache.logging.log4j" %  "log4j-api"  % "2.6",
+  "org.apache.logging.log4j" %  "log4j-core" % "2.6",
+  "org.scalacheck"           %% "scalacheck" % "1.12.5" % "test",
+  "org.scalatest"            %% "scalatest"  % "2.2.6"  % "test"
 )
 
 import scalariform.formatter.preferences._
@@ -22,5 +24,6 @@ scalariformPreferences := scalariformPreferences.value
 
 initialCommands := "import de.heikoseeberger.scalatrain._"
 
-coverageMinimum       := 100
-coverageFailOnMinimum := true
+coverageMinimum          := 100
+coverageFailOnMinimum    := true
+coverageExcludedPackages := ".*Logger"
