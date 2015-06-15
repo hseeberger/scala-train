@@ -22,7 +22,7 @@ final case class Train(info: TrainInfo, schedule: Seq[Stop]) {
   require(schedule.size >= 2, "schedule must have at least two stops!")
   require(stations.distinct == stations, "schedule must not contain duplicate stations!")
   require(
-    Time.isIncreasing(schedule.flatMap(stop => List(stop.arrivalTime, stop.departureTime))),
+    isIncreasing(schedule.flatMap(stop => List(stop.arrivalTime, stop.departureTime))),
     "schedule must be increasing in time!"
   )
 
