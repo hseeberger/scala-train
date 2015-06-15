@@ -57,21 +57,25 @@ final class TimeSpec extends WordSpec with Matchers with GeneratorDrivenProperty
     }
   }
 
-  "Calling isIncreasing" should {
+  "Calling isIncreasing(Tailrec)" should {
     "return true for an empty sequence" in {
       Time.isIncreasing(Nil) shouldBe true
+      Time.isIncreasingTailrec(Nil) shouldBe true
     }
 
     "return true for a sequence with one element" in {
       Time.isIncreasing(List(Time())) shouldBe true
+      Time.isIncreasingTailrec(List(Time())) shouldBe true
     }
 
     "return true for an increasing sequence" in {
       Time.isIncreasing(List(Time(1), Time(2), Time(3))) shouldBe true
+      Time.isIncreasingTailrec(List(Time(1), Time(2), Time(3))) shouldBe true
     }
 
     "return false for an non-increasing sequence" in {
       Time.isIncreasing(List(Time(1), Time(2), Time(2), Time(3))) shouldBe false
+      Time.isIncreasingTailrec(List(Time(1), Time(2), Time(2), Time(3))) shouldBe false
     }
   }
 
