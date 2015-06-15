@@ -26,6 +26,16 @@ class TrainSpec extends WordSpec with Matchers {
         )
       )
     }
+
+    "throw an IllegalArgumentException for a schedule not increasing in time" in {
+      an[IllegalArgumentException] should be thrownBy Train(
+        TrainInfo.RegionalExpress(86516),
+        List(
+          Stop(scalaCity, re666ScalaCity._1, re666ScalaCity._2),
+          Stop(slickMountain, re666ScalaCity._2, re666SlickMountain._2)
+        )
+      )
+    }
   }
 
   "Calling stations" should {
