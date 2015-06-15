@@ -40,7 +40,7 @@ class TrainSpec extends WordSpec with Matchers {
 
   "Calling stations" should {
     "return the stations from the schedule" in {
-      re666.stations shouldBe List(scalaCity, slickMountain)
+      re666.stations shouldBe List(scalaCity, playTown, slickMountain, newReactive)
     }
   }
 
