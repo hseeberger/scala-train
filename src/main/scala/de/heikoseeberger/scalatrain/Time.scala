@@ -21,6 +21,11 @@ import scala.language.implicitConversions
 
 object Time {
 
+  final implicit class IntOps(val n: Int) extends AnyVal {
+    def ::(hours: Int): Time =
+      Time(hours, n)
+  }
+
   private val timePattern = """(\d\d):(\d\d)""".r
 
   implicit def apply(s: String): Time =
