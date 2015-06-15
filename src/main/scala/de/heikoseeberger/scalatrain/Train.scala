@@ -5,7 +5,10 @@ import scala.collection.immutable.Seq
 case class Train(info: TrainInfo, schedule: Seq[Stop]) {
   require(schedule.size >= 2, "schedule must have at least two stops!")
   require(stations.distinct == stations, "schedule must not contain duplicate stations!")
-  // TODO Check precondition: schedule must be increasing in time!
+  require(
+    Time.isIncreasing(schedule.flatMap(stop => List(stop.arrivalTime, stop.departureTime))),
+    "schedule must be increasing in time!"
+  )
 
   def stations: Seq[Station] = schedule.map(_.station)
 }
@@ -21,7 +24,7 @@ object TrainInfo {
 }
 
 case class Stop(station: Station, arrivalTime: Time, departureTime: Time) {
-  // TODO Check precondition: arrivalTime must be before departureTime!
+  require(arrivalTime < departureTime, "arrivalTime must be before departureTime!")
 }
 
 case class Station(name: String) {
