@@ -7,7 +7,9 @@ class JourneyPlannerSpec extends WordSpec with Matchers {
 
   "Calling stations" should {
     "return the correct stations" in {
-      journeyPlanner.stations shouldBe Set(scalaCity, slickMountain, losSprayos, scalactica, akkapolis)
+      journeyPlanner.stations shouldBe Set(
+        scalaCity, playTown, slickMountain, newReactive, losSprayos, scalactica, akkapolis
+      )
     }
   }
 
@@ -31,6 +33,15 @@ class JourneyPlannerSpec extends WordSpec with Matchers {
         ice1741Scalactica._2 -> ice1741
       )
       journeyPlanner.departuresAt(akkapolis) shouldBe Set(ic2024Akkapolis._2 -> ic2024, ice1741Akkapolis._2 -> ice1741)
+    }
+  }
+
+  "Calling isShortTrip" should {
+    "return true if from and to are connected by a single train with no more than one intermediate station" in {
+      journeyPlanner.isShortTrip(scalaCity, playTown) shouldBe true
+      journeyPlanner.isShortTrip(playTown, newReactive) shouldBe true
+      journeyPlanner.isShortTrip(scalaCity, newReactive) shouldBe false
+      journeyPlanner.isShortTrip(scalaCity, scalactica) shouldBe false
     }
   }
 }
