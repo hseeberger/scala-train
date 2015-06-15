@@ -19,18 +19,24 @@ package de.heikoseeberger.scalatrain
 object TestData {
 
   val scalaCity     = Station("scalaCity")
+  val playTown      = Station("playTown")
   val slickMountain = Station("slickMountain")
+  val newReactive   = Station("newReactive")
   val losSprayos    = Station("losSprayos")
   val scalactica    = Station("scalactica")
   val akkapolis     = Station("akkapolis")
 
   val re666ScalaCity     = (Time(8, 16), Time(8, 17))
+  val re666PlayTown      = (Time(8, 26), Time(8, 30))
   val re666SlickMountain = (Time(9, 8), Time(9, 11))
+  val re666NewReactive   = (Time(9, 14), Time(23, 59)) // Final station
   val re666 = Train(
     TrainInfo.RegionalExpress(666),
     List(
       Stop(scalaCity, re666ScalaCity._1, re666ScalaCity._2),
-      Stop(slickMountain, re666SlickMountain._1, re666SlickMountain._2)
+      Stop(playTown, re666PlayTown._1, re666PlayTown._2),
+      Stop(slickMountain, re666SlickMountain._1, re666SlickMountain._2),
+      Stop(newReactive, re666NewReactive._1, re666NewReactive._2)
     )
   )
 

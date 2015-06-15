@@ -31,4 +31,13 @@ final class JourneyPlanner(trains: Set[Train]) extends Logging {
       train <- trains
       stop  <- train.schedule if stop.station == station
     } yield (stop.departureTime, train)
+
+  def isShortTrip(from: Station, to: Station): Boolean =
+    trains.exists {
+      _.stations.dropWhile(_ != from) match {
+        case Seq(`from`, _, `to`, _*) => true
+        case Seq(`from`, `to`, _*)    => true
+        case _                        => false
+      }
+    }
 }
