@@ -5,6 +5,10 @@ import scala.collection.immutable.Seq
 object Time {
   import scala.language.implicitConversions
 
+  implicit class IntOps(val n: Int) extends AnyVal {
+    def ::(hours: Int): Time = Time(hours, n)
+  }
+
   val timePattern = """(\d\d):(\d\d)""".r
 
   implicit def apply(s: String): Time =
