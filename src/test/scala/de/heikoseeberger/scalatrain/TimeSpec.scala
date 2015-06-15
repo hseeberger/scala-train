@@ -75,6 +75,18 @@ final class TimeSpec extends WordSpec with Matchers with GeneratorDrivenProperty
     }
   }
 
+  "Calling toString" should {
+    "return 09:10 for Time(9, 10)" in {
+      Time(1, 10).toString shouldBe "01:10"
+    }
+
+    "return a correctly formatted string for any Time" in {
+      forAll(timeGen -> "time") { time =>
+        time.toString shouldBe f"${time.hours}%02d:${time.minutes}%02d"
+      }
+    }
+  }
+
   private def timeGen =
     for {
       hours   <- Gen.choose(0, 23)

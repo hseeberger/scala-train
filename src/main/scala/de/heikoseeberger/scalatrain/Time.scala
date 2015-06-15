@@ -32,4 +32,6 @@ final case class Time(hours: Int = 0, minutes: Int = 0) {
     def asMinutes(time: Time) = time.hours * 60 + time.minutes
     asMinutes(this) - asMinutes(that)
   }
+
+  override def toString = f"$hours%02d:$minutes%02d"
 }
