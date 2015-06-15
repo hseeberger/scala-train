@@ -40,6 +40,24 @@ final class TimeSpec extends WordSpec with Matchers with GeneratorDrivenProperty
     }
   }
 
+  "Calling isIncreasing" should {
+    "return true for an empty sequence" in {
+      Time.isIncreasing(Nil) shouldBe true
+    }
+
+    "return true for a sequence with one element" in {
+      Time.isIncreasing(List(Time())) shouldBe true
+    }
+
+    "return true for an increasing sequence" in {
+      Time.isIncreasing(List(Time(1), Time(2), Time(3))) shouldBe true
+    }
+
+    "return false for an non-increasing sequence" in {
+      Time.isIncreasing(List(Time(1), Time(2), Time(2), Time(3))) shouldBe false
+    }
+  }
+
   "Creating a Time" should {
     "throw an IllegalArgumentException for hours less than 0 or greater equal 24" in {
       forAll("hours") { (hours: Int) =>
@@ -84,6 +102,12 @@ final class TimeSpec extends WordSpec with Matchers with GeneratorDrivenProperty
       forAll(timeGen -> "time") { time =>
         time.toString shouldBe f"${time.hours}%02d:${time.minutes}%02d"
       }
+    }
+  }
+
+  "Calling the less than operator" should {
+    "return false for Time(1, 10) < Time(1, 10)" in {
+      Time(1, 10) < Time(0, 10) shouldBe false
     }
   }
 
