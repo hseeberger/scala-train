@@ -1,5 +1,6 @@
 package de.heikoseeberger.scalatrain
 
+import scala.annotation.tailrec
 import scala.collection.immutable.Seq
 
 object Time {
@@ -27,6 +28,12 @@ object Time {
       case Seq(t1, t2) => t1 < t2
       case _           => true
     }
+
+  @tailrec
+  def isIncreasingTailrec(times: Seq[Time]): Boolean = times match {
+    case Seq(t1, t2, _*) => t1 < t2 && isIncreasingTailrec(times.tail)
+    case _               => true
+  }
 }
 
 case class Time(hours: Int = 0, minutes: Int = 0) extends Ordered[Time] {
