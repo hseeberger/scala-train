@@ -8,7 +8,7 @@ object Labeled {
     override def label(station: Station)(implicit locale: Locale) = lookupLabel(s"station.${station.name}")
   }
 
-  def label[A](a: A)(implicit labeled: Labeled[A], locale: Locale): String = labeled.label(a)
+  def label[A: Labeled](a: A)(implicit locale: Locale): String = implicitly[Labeled[A]].label(a)
 
   private def lookupLabel(key: String)(implicit locale: Locale) =
     try
