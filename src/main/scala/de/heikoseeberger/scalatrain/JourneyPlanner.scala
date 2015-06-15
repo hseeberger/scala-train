@@ -1,6 +1,8 @@
 package de.heikoseeberger.scalatrain
 
-class JourneyPlanner(trains: Set[Train]) {
+class JourneyPlanner(trains: Set[Train]) extends Logging {
+
+  logger.debug(f"Using these ${trains.size} trains:%n  ${trains.mkString(f"%n  ")}")
 
   def stations: Set[Station] = trains.flatMap(_.stations)
 
