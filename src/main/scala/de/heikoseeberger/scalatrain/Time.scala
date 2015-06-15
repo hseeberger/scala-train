@@ -3,6 +3,18 @@ package de.heikoseeberger.scalatrain
 import scala.collection.immutable.Seq
 
 object Time {
+  import scala.language.implicitConversions
+
+  val timePattern = """(\d\d):(\d\d)""".r
+
+  implicit def apply(s: String): Time =
+    try {
+      val timePattern(hours, minutes) = s
+      Time(hours.toInt, minutes.toInt)
+    } catch {
+      case _: MatchError => throw new IllegalArgumentException(s"Time must have format hh:mm!")
+    }
+
   def fromMinutes(minutes: Int): Time = new Time(minutes / 60, minutes % 60)
 
   def isIncreasing(times: Seq[Time]): Boolean = times
