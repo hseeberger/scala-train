@@ -17,8 +17,19 @@
 package de.heikoseeberger.scalatrain
 
 import scala.collection.immutable.Seq
+import scala.language.implicitConversions
 
 object Time {
+
+  private val timePattern = """(\d\d):(\d\d)""".r
+
+  implicit def apply(s: String): Time =
+    try {
+      val timePattern(hours, minutes) = s
+      Time(hours.toInt, minutes.toInt)
+    } catch {
+      case _: MatchError => throw new IllegalArgumentException(s"Time must have format hh:mm!")
+    }
 
   def fromMinutes(minutes: Int): Time =
     new Time(minutes / 60, minutes % 60)

@@ -22,6 +22,16 @@ import org.scalatest.{ Matchers, WordSpec }
 
 final class TimeSpec extends WordSpec with Matchers with GeneratorDrivenPropertyChecks {
 
+  "Calling apply" should {
+    "throw an IllegalArgumentException for an invalid String representation" in {
+      an[IllegalArgumentException] should be thrownBy ("1:100": Time)
+    }
+
+    "implicitly convert a String into a Time" in {
+      ("01:05": Time) shouldBe Time(1, 5)
+    }
+  }
+
   "Calling fromMinutes" should {
     "return Time(0, 10) for 10 minutes" in {
       Time.fromMinutes(10) shouldBe Time(0, 10)
