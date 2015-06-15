@@ -28,9 +28,9 @@ final class JourneyPlanner(trains: Set[Train]) extends Logging {
 
   def departuresAt(station: Station): Set[(Time, Train)] =
     for {
-      train <- trains
-      stop  <- train.schedule if stop.station == station
-    } yield (stop.departureTime, train)
+      train                             <- trains
+      Stop(`station`, _, departureTime) <- train.schedule
+    } yield (departureTime, train)
 
   def isShortTrip(from: Station, to: Station): Boolean =
     trains.exists {
