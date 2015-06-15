@@ -10,8 +10,10 @@ scalacOptions ++= List(
 )
 
 libraryDependencies ++= List(
-  "org.scalacheck" %% "scalacheck" % "1.12.5" % "test",
-  "org.scalatest"  %% "scalatest"  % "2.2.6"  % "test"
+  "org.apache.logging.log4j" %  "log4j-api"  % "2.5",
+  "org.apache.logging.log4j" %  "log4j-core" % "2.5",
+  "org.scalacheck"           %% "scalacheck" % "1.12.5" % "test",
+  "org.scalatest"            %% "scalatest"  % "2.2.6"  % "test"
 )
 
 import scalariform.formatter.preferences._
@@ -25,5 +27,6 @@ initialCommands := "import de.heikoseeberger.scalatrain._"
 test.in(Test)         := { scalastyle.in(Compile).toTask("").value; test.in(Test).value }
 scalastyleFailOnError := true
 
-coverageMinimum       := 100
-coverageFailOnMinimum := true
+coverageMinimum          := 100
+coverageFailOnMinimum    := true
+coverageExcludedPackages := ".*Logger"
