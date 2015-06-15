@@ -1,8 +1,5 @@
 package de.heikoseeberger.scalatrain
 
-import scala.annotation.tailrec
-import scala.collection.immutable.Seq
-
 object Time {
   import scala.language.implicitConversions
 
@@ -21,19 +18,6 @@ object Time {
     }
 
   def fromMinutes(minutes: Int): Time = new Time(minutes / 60, minutes % 60)
-
-  def isIncreasing(times: Seq[Time]): Boolean = times
-    .sliding(2)
-    .forall {
-      case Seq(t1, t2) => t1 < t2
-      case _           => true
-    }
-
-  @tailrec
-  def isIncreasingTailrec(times: Seq[Time]): Boolean = times match {
-    case Seq(t1, t2, _*) => t1 < t2 && isIncreasingTailrec(times.tail)
-    case _               => true
-  }
 }
 
 case class Time(hours: Int = 0, minutes: Int = 0) extends Ordered[Time] {
