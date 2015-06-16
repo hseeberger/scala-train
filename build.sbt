@@ -11,6 +11,7 @@ lazy val `scala-train` =
       libraryDependencies ++= Seq(
         library.log4jApi,
         library.log4jCore,
+        library.scalactic,
         library.scalaCheck % Test,
         library.scalaTest  % Test
       )
@@ -31,6 +32,7 @@ lazy val library =
     val log4jCore  = "org.apache.logging.log4j" %  "log4j-core" % Version.log4j
     val scalaCheck = "org.scalacheck"           %% "scalacheck" % Version.scalaCheck
     val scalaTest  = "org.scalatest"            %% "scalatest"  % Version.scalaTest
+    val scalactic  = "org.scalactic"            %% "scalactic"  % Version.scalaTest
   }
 
 // *****************************************************************************
