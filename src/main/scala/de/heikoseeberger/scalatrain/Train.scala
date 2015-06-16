@@ -16,6 +16,7 @@
 
 package de.heikoseeberger.scalatrain
 
+import scala.collection.breakOut
 import scala.collection.immutable.Seq
 
 final case class Train(info: TrainInfo, schedule: Seq[Stop]) {
@@ -28,6 +29,15 @@ final case class Train(info: TrainInfo, schedule: Seq[Stop]) {
 
   def stations: Seq[Station] =
     schedule.map(_.station)
+
+  def backToBackStations: Seq[(Station, Station)] =
+    stations.zip(stations.tail)
+
+  def arrivalTimeByStation: Map[Station, Time] =
+    schedule.map(stop => stop.station -> stop.arrivalTime)(breakOut)
+
+  def departureTimeByStation: Map[Station, Time] =
+    schedule.map(stop => stop.station -> stop.departureTime)(breakOut)
 
   override def toString =
     info match {

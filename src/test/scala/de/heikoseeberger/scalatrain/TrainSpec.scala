@@ -60,6 +60,38 @@ final class TrainSpec extends WordSpec with Matchers {
     }
   }
 
+  "Calling backToBackStations" should {
+    "return the back-to-back stations from the schedule" in {
+      re666.backToBackStations shouldEqual List(
+        scalaCity     -> playTown,
+        playTown      -> slickMountain,
+        slickMountain -> newReactive
+      )
+    }
+  }
+
+  "Calling arrivalTimeByStation" should {
+    "return the arrival times from the schedule" in {
+      re666.arrivalTimeByStation shouldBe Map(
+        scalaCity     -> re666ScalaCity._1,
+        playTown      -> re666PlayTown._1,
+        slickMountain -> re666SlickMountain._1,
+        newReactive   -> re666NewReactive._1
+      )
+    }
+  }
+
+  "Calling departureTimeByStation" should {
+    "return the departure times from the schedule" in {
+      re666.departureTimeByStation shouldBe Map(
+        scalaCity     -> re666ScalaCity._2,
+        playTown      -> re666PlayTown._2,
+        slickMountain -> re666SlickMountain._2,
+        newReactive   -> re666NewReactive._2
+      )
+    }
+  }
+
   "Calling toString" should {
     "return the correct string" in {
       re666.toString shouldBe "RE 666"
