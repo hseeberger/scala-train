@@ -12,6 +12,7 @@ scalacOptions ++= Vector(
 libraryDependencies ++= Vector(
   "org.apache.logging.log4j" %  "log4j-api"  % "2.5",
   "org.apache.logging.log4j" %  "log4j-core" % "2.5",
+  "org.scalactic"            %% "scalactic"  % "2.2.6",
   "org.scalacheck"           %% "scalacheck" % "1.12.5" % "test",
   "org.scalatest"            %% "scalatest"  % "2.2.6"  % "test"
 )
@@ -29,4 +30,4 @@ scalastyleFailOnError := true
 
 coverageMinimum          := 100
 coverageFailOnMinimum    := true
-coverageExcludedPackages := ".*Logger"
+coverageExcludedPackages := ".*App;.*Logger"
