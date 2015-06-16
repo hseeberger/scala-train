@@ -10,11 +10,13 @@ scalacOptions ++= Vector(
 )
 
 libraryDependencies ++= Vector(
-  "org.apache.logging.log4j" %  "log4j-api"  % "2.6",
-  "org.apache.logging.log4j" %  "log4j-core" % "2.6",
-  "org.scalactic"            %% "scalactic"  % "2.2.6",
-  "org.scalacheck"           %% "scalacheck" % "1.12.5" % "test",
-  "org.scalatest"            %% "scalatest"  % "2.2.6"  % "test"
+  "com.typesafe.akka"        %% "akka-http-experimental"            % "2.4.6",
+  "com.typesafe.akka"        %% "akka-http-spray-json-experimental" % "2.4.6",
+  "org.apache.logging.log4j" %  "log4j-api"                         % "2.6",
+  "org.apache.logging.log4j" %  "log4j-core"                        % "2.6",
+  "org.scalactic"            %% "scalactic"                         % "2.2.6",
+  "org.scalacheck"           %% "scalacheck"                        % "1.12.5" % "test",
+  "org.scalatest"            %% "scalatest"                         % "2.2.6"  % "test"
 )
 
 import scalariform.formatter.preferences._
@@ -27,4 +29,4 @@ initialCommands := "import de.heikoseeberger.scalatrain._"
 
 coverageMinimum          := 100
 coverageFailOnMinimum    := true
-coverageExcludedPackages := ".*App;.*Logger"
+coverageExcludedPackages := ".*App;.*JsonProtocol;.*Logger"
