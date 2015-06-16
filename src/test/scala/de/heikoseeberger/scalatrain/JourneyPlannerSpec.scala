@@ -44,4 +44,35 @@ class JourneyPlannerSpec extends WordSpec with Matchers {
       journeyPlanner.isShortTrip(scalaCity, scalactica) shouldBe false
     }
   }
+
+  "Calling connections" should {
+    "throw an IllegalArgumentException for equal from and to" in {
+      an[IllegalArgumentException] should be thrownBy journeyPlanner.connections(scalaCity, scalaCity, Time())
+    }
+
+    "return two connections from Scala City to Akkapolis after 8:00" in {
+      journeyPlanner.connections(scalaCity, akkapolis, Time(8)) shouldEqual Set(
+        List(
+          Leg(scalaCity, slickMountain, re666),
+          Leg(slickMountain, scalactica, ice610),
+          Leg(scalactica, akkapolis, ic2024)
+        ),
+        List(
+          Leg(scalaCity, slickMountain, re666),
+          Leg(slickMountain, losSprayos, ice610),
+          Leg(losSprayos, scalactica, ic2312),
+          Leg(scalactica, akkapolis, ice1741)
+        ),
+        List(
+          Leg(scalaCity, slickMountain, re666),
+          Leg(slickMountain, scalactica, ice610),
+          Leg(scalactica, akkapolis, ice1741)
+        )
+      )
+    }
+
+    "return zero connections from Scala City to Akkapolis after 9:00" in {
+      journeyPlanner.connections(scalaCity, akkapolis, Time(9)) shouldEqual Set.empty
+    }
+  }
 }
