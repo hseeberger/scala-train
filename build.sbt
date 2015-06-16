@@ -9,6 +9,8 @@ lazy val `scala-train` =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
+        library.akkaHttp,
+        library.akkaHttpSprayJson,
         library.log4jApi,
         library.log4jCore,
         library.scalactic,
@@ -24,15 +26,18 @@ lazy val `scala-train` =
 lazy val library =
   new {
     object Version {
+      val akkaHttp   = "10.0.11"
       val log4j      = "2.10.0"
       val scalaCheck = "1.13.5"
       val scalaTest  = "3.0.4"
     }
-    val log4jApi   = "org.apache.logging.log4j" %  "log4j-api"  % Version.log4j
-    val log4jCore  = "org.apache.logging.log4j" %  "log4j-core" % Version.log4j
-    val scalaCheck = "org.scalacheck"           %% "scalacheck" % Version.scalaCheck
-    val scalaTest  = "org.scalatest"            %% "scalatest"  % Version.scalaTest
-    val scalactic  = "org.scalactic"            %% "scalactic"  % Version.scalaTest
+    val akkaHttp          = "com.typesafe.akka"        %% "akka-http"            % Version.akkaHttp
+    val akkaHttpSprayJson = "com.typesafe.akka"        %% "akka-http-spray-json" % Version.akkaHttp
+    val log4jApi          = "org.apache.logging.log4j" %  "log4j-api"            % Version.log4j
+    val log4jCore         = "org.apache.logging.log4j" %  "log4j-core"           % Version.log4j
+    val scalaCheck        = "org.scalacheck"           %% "scalacheck"           % Version.scalaCheck
+    val scalaTest         = "org.scalatest"            %% "scalatest"            % Version.scalaTest
+    val scalactic         = "org.scalactic"            %% "scalactic"            % Version.scalaTest
   }
 
 // *****************************************************************************
