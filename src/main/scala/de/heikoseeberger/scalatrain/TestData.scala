@@ -1,5 +1,6 @@
 package de.heikoseeberger.scalatrain
 
+// scalastyle:off
 object TestData {
 
   val scalaCity = Station("scalaCity")

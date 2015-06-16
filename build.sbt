@@ -12,6 +12,7 @@ scalacOptions ++= List(
 libraryDependencies ++= List(
   "org.apache.logging.log4j" %  "log4j-api"  % "2.3",
   "org.apache.logging.log4j" %  "log4j-core" % "2.3",
+  "org.scalactic"            %% "scalactic"  % "2.2.5",
   "org.scalacheck"           %% "scalacheck" % "1.12.4" % "test",
   "org.scalatest"            %% "scalatest"  % "2.2.5"  % "test"
 )
@@ -29,4 +30,4 @@ scalastyleFailOnError := true
 
 coverageMinimum          := 100
 coverageFailOnMinimum    := true
-coverageExcludedPackages := ".*Logger"
+coverageExcludedPackages := ".*App;.*Logger"
