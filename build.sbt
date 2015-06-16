@@ -10,11 +10,13 @@ scalacOptions ++= List(
 )
 
 libraryDependencies ++= List(
-  "org.apache.logging.log4j" %  "log4j-api"  % "2.3",
-  "org.apache.logging.log4j" %  "log4j-core" % "2.3",
-  "org.scalactic"            %% "scalactic"  % "2.2.5",
-  "org.scalacheck"           %% "scalacheck" % "1.12.4" % "test",
-  "org.scalatest"            %% "scalatest"  % "2.2.5"  % "test"
+  "com.typesafe.akka"        %% "akka-http-experimental"            % "1.0",
+  "com.typesafe.akka"        %% "akka-http-spray-json-experimental" % "1.0",
+  "org.apache.logging.log4j" %  "log4j-api"                         % "2.3",
+  "org.apache.logging.log4j" %  "log4j-core"                        % "2.3",
+  "org.scalactic"            %% "scalactic"                         % "2.2.5",
+  "org.scalacheck"           %% "scalacheck"                        % "1.12.4" % "test",
+  "org.scalatest"            %% "scalatest"                         % "2.2.5"  % "test"
 )
 
 import scalariform.formatter.preferences._
@@ -30,4 +32,4 @@ scalastyleFailOnError := true
 
 coverageMinimum          := 100
 coverageFailOnMinimum    := true
-coverageExcludedPackages := ".*App;.*Logger"
+coverageExcludedPackages := ".*App;.*JsonProtocol;.*Logger"
