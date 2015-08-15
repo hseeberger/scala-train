@@ -59,4 +59,15 @@ final class TrainSpec extends WordSpec with Matchers {
       re666.stations shouldBe List(scalaCity, slickMountain)
     }
   }
+
+  "Calling toString" should {
+    "return the correct string" in {
+      re666.toString shouldBe "RE 666"
+      ice610.toString shouldBe "ICE 610"
+      ic2024.toString shouldBe "IC 2024"
+      ice610
+        .copy(info = ice610.info.asInstanceOf[TrainInfo.InterCityExpress].copy(hasWifi = true))
+        .toString shouldBe "ICE 610 (WIFI)"
+    }
+  }
 }
