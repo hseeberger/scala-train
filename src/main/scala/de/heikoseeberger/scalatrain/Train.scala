@@ -11,6 +11,13 @@ case class Train(info: TrainInfo, schedule: Seq[Stop]) {
   )
 
   def stations: Seq[Station] = schedule.map(_.station)
+
+  override def toString = info match {
+    case TrainInfo.InterCityExpress(number, true) => s"ICE $number (WIFI)"
+    case TrainInfo.InterCityExpress(number, _)    => s"ICE $number"
+    case TrainInfo.InterCity(number)              => s"IC $number"
+    case TrainInfo.RegionalExpress(number)        => s"RE $number"
+  }
 }
 
 sealed abstract class TrainInfo {
