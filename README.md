@@ -1,6 +1,8 @@
-# scala-train #
+# Scala Train #
 
-Welcome to scala-train!
+This repository contains the code examples for the second edition of the book "Durchstarten mit
+Scala". As this repository is continuously updated to latest versions of Scala, library dependencies
+and idiomatic coding style, it gets ahead of the examples in the book.
 
 ## Contribution policy ##
 
